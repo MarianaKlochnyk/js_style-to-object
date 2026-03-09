@@ -8,13 +8,14 @@
 function convertToObject(sourceString) {
   return sourceString
     .split(';')
-    .filter((style) => style.trim())
-    .reduce((cssObject, style) => {
+    .map((style) => style.trim())
+    .filter((style) => style && style.includes(':'))
+    .reduce((cssStylesObject, style) => {
       const [property, value] = style.split(':');
-      
-      cssObject[property.trim()] = value.trim();
 
-      return cssObject;
+      cssStylesObject[property.trim()] = value.trim();
+
+      return cssStylesObject;
     }, {});
 }
 
