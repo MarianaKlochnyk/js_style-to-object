@@ -11,7 +11,7 @@ function convertToObject(sourceString) {
     .filter((style) => style.trim())
     .reduce((cssObject, style) => {
       const [property, value] = style.split(':');
-
+      
       cssObject[property.trim()] = value.trim();
 
       return cssObject;
